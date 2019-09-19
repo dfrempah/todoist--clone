@@ -22,6 +22,7 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
 ul {
   margin: 0;
   padding: 0;
@@ -428,7 +429,12 @@ header {
 /* Show Confirm Delete
   ============================================ */
 .project-delete-modal {
-  position: relative;
+  position: absolute;
+  z-index: 99;
+  width: 200px;
+  padding: 10px;
+  right: 0;
+  background-color: white;
 
   &__inner {
     @include box-overlay();
@@ -440,6 +446,7 @@ header {
     background-color: white;
 
     p {
+      display: block;
       margin-top: 5px;
       margin-bottom: 5px;
       line-height: normal;
@@ -727,3 +734,16 @@ header {
     @include cancel();
   }
 }
+
+
+.project-delete-modal__inner {
+  @include box-overlay();
+  z-index: auto;
+  width: 200px;
+  margin-left: -200px;
+  padding: 10px;
+  top: 10px;
+  right: 0;
+  background-color: white;
+}
+
