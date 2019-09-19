@@ -13,13 +13,6 @@ export const Tasks = () => {
     const { projects } = useProjectsValue(selectedProject);
     const { tasks } = useTasks(selectedProject);
 
-
-    // console.log("this is projects",projects)
-    // console.log("this is tasks",tasks)
-
-
-
-
     let projectName = '';
 
     if(projects && selectedProject && !collatedTasksExist(selectedProject) ){
@@ -28,15 +21,23 @@ export const Tasks = () => {
         console.log("project name is ", projectName)
     }
 
-    // if(collatedTasksExist(selectedProject) && selectedProject){
-    //     projectName = getCollatedTitle(collatedTasks, selectedProject)
-    //     console.log('projectName 2: ', projectName.name)
-    // }
+    if (collatedTasksExist(selectedProject) && selectedProject) {
+        projectName = getCollatedTitle(collatedTasks, selectedProject).name;
+      }
+    
+      if (
+        projects &&
+        projects.length > 0 &&
+        selectedProject &&
+        !collatedTasksExist(selectedProject)
+      ) {
+        projectName = getTitle(projects, selectedProject).name;
+      }
 
-
-    // useEffect(() => {
-    //     document.title = `${projectName}: Todoist`
-    // })
+      useEffect(() => {
+        document.title = `${projectName}: Todoist`;
+      });
+    
     return(
         <div className="tasks" data-testid="tasks">
             <h2 data-testid="project-name">{projectName}</h2>
