@@ -17,7 +17,7 @@ export const IndividualProject = (props) => {
         firebase
         .firestore()
         .collection("projects")
-        .doc('0yW2GQZxrEekQbWHKQdo')
+        .doc(projectId)
         .delete()
         .then(() => {
             setProjects([...projects]);
